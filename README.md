@@ -1,3 +1,24 @@
-# grafana-stack-module
+# grafana stack module
 
-Stack module `grafana` extracted from `sso-stack-generator`.
+- Module id: `grafana`
+- Module repo: `grafana-stack-module`
+- Source repo: none declared
+- Lifecycle: `active`
+
+## Owned overlays
+- `stack.compose/grafana.yml`
+- `stack.config/grafana`
+
+## Dependencies
+- `prometheus`
+- `stack-foundation`
+
+## Validation
+
+```sh
+./tests/validate.sh
+```
+
+## Lifecycle
+
+`active` modules are expected to keep `stack.module.json`, owned overlays, and `tests/validate.sh` in sync.
