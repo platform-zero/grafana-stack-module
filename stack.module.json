@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "grafana",
+  "repo": "grafana-stack-module",
+  "runtimeId": "grafana",
+  "lifecycle": "active",
+  "dependencies": [
+    "prometheus",
+    "stack-foundation"
+  ],
+  "overlays": [
+    "stack.compose/grafana.yml",
+    "stack.config/grafana"
+  ]
+}
