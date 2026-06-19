@@ -8,8 +8,21 @@
     "prometheus",
     "stack-foundation"
   ],
+  "runtimeDependencies": [
+    "prometheus",
+    "stack-foundation",
+    "postgres",
+    "postgres-ssd",
+    "loki"
+  ],
+  "contracts": [
+    "module-contract"
+  ],
+  "smoke": "external-only",
+  "smokeUnsupportedReason": "requires generated bundle context, deployed networking, secrets, or service dependencies",
   "overlays": [
     "stack.compose/grafana.yml",
     "stack.config/grafana"
-  ]
+  ],
+  "testAssets": []
 }
