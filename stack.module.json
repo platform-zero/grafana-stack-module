@@ -26,7 +26,8 @@
     "stack.containers/test-runner/playwright-tests/tests/deep/forward-auth/grafana.spec.ts",
     "stack.containers/test-runner/playwright-tests/tests/deep/oidc/grafana.spec.ts",
     "stack.kotlin/test-runner/src/test/kotlin/org/webservices/testrunner/GrafanaSecretLoggingConfigTest.kt",
-    "stack.kotlin/test-runner/src/main/kotlin/org/webservices/testrunner/suites/GrafanaMonitoringTests.kt"
+    "stack.kotlin/test-runner/src/main/kotlin/org/webservices/testrunner/suites/GrafanaMonitoringTests.kt",
+    "stack.runtime.yaml"
   ],
   "testAssets": []
 }
