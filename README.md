@@ -6,7 +6,7 @@
 - Lifecycle: `active`
 
 ## Owned overlays
-- `stack.compose/grafana.yml`
+- `stack.runtime.yaml`
 - `stack.config/grafana`
 
 ## Dependencies
