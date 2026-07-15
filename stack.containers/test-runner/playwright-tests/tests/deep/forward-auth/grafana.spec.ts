@@ -33,15 +33,31 @@ test.use({ storageState: authenticatedSessionState });
 
     // Validate default home dashboard shows Logs panel
     const logsPanelTitle = page.getByText('All Logs', { exact: false }).first();
-    if (await logsPanelTitle.isVisible().catch(() => false)) {
-      await expect(logsPanelTitle).toBeVisible();
-    }
+    await expect(logsPanelTitle).toBeVisible();
 
     // Validate Loki datasource via Grafana API
     const response = await page.request.get(serviceUrl('grafana', '/api/datasources/name/Loki'));
-    expect(response.ok()).toBeTruthy();
+    expect(response.status()).toBe(200);
     const data = await response.json();
     expect(data.type).toBe('loki');
     expect(String(data.url)).toContain('http://loki:3100');
-  });
 
+    const now = Date.now();
+    const queryResponse = await page.request.post(serviceUrl('grafana', '/api/ds/query'), {
+      data: {
+        from: String(now - 60 * 60 * 1000),
+        to: String(now),
+        queries: [{
+          refId: 'A',
+          expr: '{source="journald"}',
+          queryType: 'range',
+          maxLines: 100,
+          datasource: { type: 'loki', uid: 'loki' },
+        }],
+      },
+    });
+    expect(queryResponse.status()).toBe(200);
+    const queryData = await queryResponse.json();
+    expect(queryData.results?.A?.frames?.length ?? 0).toBeGreaterThan(0);
+    await expect(page.getByText('No data', { exact: true })).toHaveCount(0);
+  });
