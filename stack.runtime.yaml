@@ -34,6 +34,8 @@ services:
       GF_LOG_LEVEL: "${GRAFANA_LOG_LEVEL:-info}"
       GF_LOG_FILTERS: "${GRAFANA_LOG_FILTERS:-auth.proxy:info}"
       GF_DASHBOARDS_DEFAULT_HOME_DASHBOARD_PATH: "/etc/grafana/provisioning/dashboards/logs.json"
+      GF_PLUGINS_DISABLE_PLUGINS: "grafana-lokiexplore-app"
+      GF_PLUGINS_PREINSTALL_DISABLED: true
       GF_ALERTING_ENABLED: false
       GF_UNIFIED_ALERTING_ENABLED: false
       POSTGRES_PIPELINE_USER: "${POSTGRES_PIPELINE_USER}"

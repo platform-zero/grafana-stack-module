@@ -5,38 +5,34 @@
   "tags": ["markets", "daily", "external-data"],
   "timezone": "browser",
   "schemaVersion": 39,
-  "version": 2,
-  "refresh": "6h",
+  "version": 3,
+  "refresh": "1h",
   "time": {
-    "from": "now-90d",
+    "from": "now-30d",
     "to": "now"
   },
   "panels": [
     {
       "id": 1,
       "type": "stat",
-      "title": "Australia",
+      "title": "S&P 500",
+      "description": "Latest S&P 500 close reported by FRED.",
       "datasource": {"type": "prometheus", "uid": "prometheus"},
-      "targets": [
-        {
-          "refId": "A",
-          "expr": "market_data_latest_value{region=\"australia\"}",
-          "legendFormat": "{{source}} / {{label}}"
-        }
-      ],
-      "gridPos": {"h": 7, "w": 8, "x": 0, "y": 0},
+      "targets": [{"refId": "A", "expr": "market_data_latest_value{symbol=\"SP500\"}", "legendFormat": "S&P 500"}],
+      "gridPos": {"h": 5, "w": 4, "x": 0, "y": 0},
       "options": {
         "reduceOptions": {"values": false, "calcs": ["lastNotNull"], "fields": ""},
         "orientation": "auto",
-        "textMode": "auto",
+        "textMode": "value_and_name",
         "colorMode": "value",
         "graphMode": "area",
         "justifyMode": "auto"
       },
       "fieldConfig": {
         "defaults": {
+          "color": {"mode": "fixed", "fixedColor": "blue"},
           "decimals": 2,
-          "thresholds": {"mode": "absolute", "steps": [{"color": "green", "value": null}]}
+          "thresholds": {"mode": "absolute", "steps": [{"color": "blue", "value": null}]}
         },
         "overrides": []
       }
@@ -44,28 +40,24 @@
     {
       "id": 2,
       "type": "stat",
-      "title": "China",
+      "title": "NASDAQ",
+      "description": "Latest NASDAQ Composite close reported by FRED.",
       "datasource": {"type": "prometheus", "uid": "prometheus"},
-      "targets": [
-        {
-          "refId": "A",
-          "expr": "market_data_latest_value{region=\"china\"}",
-          "legendFormat": "{{source}} / {{label}}"
-        }
-      ],
-      "gridPos": {"h": 7, "w": 8, "x": 8, "y": 0},
+      "targets": [{"refId": "A", "expr": "market_data_latest_value{symbol=\"NASDAQCOM\"}", "legendFormat": "NASDAQ Composite"}],
+      "gridPos": {"h": 5, "w": 4, "x": 4, "y": 0},
       "options": {
         "reduceOptions": {"values": false, "calcs": ["lastNotNull"], "fields": ""},
         "orientation": "auto",
-        "textMode": "auto",
+        "textMode": "value_and_name",
         "colorMode": "value",
         "graphMode": "area",
         "justifyMode": "auto"
       },
       "fieldConfig": {
         "defaults": {
+          "color": {"mode": "fixed", "fixedColor": "purple"},
           "decimals": 2,
-          "thresholds": {"mode": "absolute", "steps": [{"color": "green", "value": null}]}
+          "thresholds": {"mode": "absolute", "steps": [{"color": "purple", "value": null}]}
         },
         "overrides": []
       }
@@ -73,28 +65,25 @@
     {
       "id": 3,
       "type": "stat",
-      "title": "Europe",
+      "title": "Bitcoin",
+      "description": "Latest Bitcoin price reported by CoinGecko.",
       "datasource": {"type": "prometheus", "uid": "prometheus"},
-      "targets": [
-        {
-          "refId": "A",
-          "expr": "market_data_latest_value{region=\"europe\"}",
-          "legendFormat": "{{source}} / {{label}}"
-        }
-      ],
-      "gridPos": {"h": 7, "w": 8, "x": 16, "y": 0},
+      "targets": [{"refId": "A", "expr": "market_data_latest_value{symbol=\"bitcoin\"}", "legendFormat": "Bitcoin / USD"}],
+      "gridPos": {"h": 5, "w": 4, "x": 8, "y": 0},
       "options": {
         "reduceOptions": {"values": false, "calcs": ["lastNotNull"], "fields": ""},
         "orientation": "auto",
-        "textMode": "auto",
+        "textMode": "value_and_name",
         "colorMode": "value",
         "graphMode": "area",
         "justifyMode": "auto"
       },
       "fieldConfig": {
         "defaults": {
-          "decimals": 2,
-          "thresholds": {"mode": "absolute", "steps": [{"color": "green", "value": null}]}
+          "color": {"mode": "fixed", "fixedColor": "orange"},
+          "unit": "currencyUSD",
+          "decimals": 0,
+          "thresholds": {"mode": "absolute", "steps": [{"color": "orange", "value": null}]}
         },
         "overrides": []
       }
@@ -102,28 +91,25 @@
     {
       "id": 4,
       "type": "stat",
-      "title": "Asia",
+      "title": "Brent Crude",
+      "description": "Latest Brent crude oil price in US dollars per barrel.",
       "datasource": {"type": "prometheus", "uid": "prometheus"},
-      "targets": [
-        {
-          "refId": "A",
-          "expr": "market_data_latest_value{region=\"asia\"}",
-          "legendFormat": "{{source}} / {{label}}"
-        }
-      ],
-      "gridPos": {"h": 7, "w": 8, "x": 0, "y": 7},
+      "targets": [{"refId": "A", "expr": "market_data_latest_value{symbol=\"DCOILBRENTEU\"}", "legendFormat": "USD / barrel"}],
+      "gridPos": {"h": 5, "w": 4, "x": 12, "y": 0},
       "options": {
         "reduceOptions": {"values": false, "calcs": ["lastNotNull"], "fields": ""},
         "orientation": "auto",
-        "textMode": "auto",
+        "textMode": "value_and_name",
         "colorMode": "value",
         "graphMode": "area",
         "justifyMode": "auto"
       },
       "fieldConfig": {
         "defaults": {
+          "color": {"mode": "fixed", "fixedColor": "yellow"},
+          "unit": "currencyUSD",
           "decimals": 2,
-          "thresholds": {"mode": "absolute", "steps": [{"color": "green", "value": null}]}
+          "thresholds": {"mode": "absolute", "steps": [{"color": "yellow", "value": null}]}
         },
         "overrides": []
       }
@@ -131,27 +117,23 @@
     {
       "id": 5,
       "type": "stat",
-      "title": "United States",
+      "title": "AUD / USD",
+      "description": "Latest Australian dollar reference rate reported by the RBA.",
       "datasource": {"type": "prometheus", "uid": "prometheus"},
-      "targets": [
-        {
-          "refId": "A",
-          "expr": "market_data_latest_value{region=\"united_states\"}",
-          "legendFormat": "{{source}} / {{label}}"
-        }
-      ],
-      "gridPos": {"h": 7, "w": 8, "x": 8, "y": 7},
+      "targets": [{"refId": "A", "expr": "market_data_latest_value{symbol=\"AUDUSD\"}", "legendFormat": "AUD / USD"}],
+      "gridPos": {"h": 5, "w": 4, "x": 16, "y": 0},
       "options": {
         "reduceOptions": {"values": false, "calcs": ["lastNotNull"], "fields": ""},
         "orientation": "auto",
-        "textMode": "auto",
+        "textMode": "value_and_name",
         "colorMode": "value",
         "graphMode": "area",
         "justifyMode": "auto"
       },
       "fieldConfig": {
         "defaults": {
-          "decimals": 2,
+          "color": {"mode": "fixed", "fixedColor": "green"},
+          "decimals": 4,
           "thresholds": {"mode": "absolute", "steps": [{"color": "green", "value": null}]}
         },
         "overrides": []
@@ -160,28 +142,24 @@
     {
       "id": 6,
       "type": "stat",
-      "title": "Global + Crypto",
+      "title": "VIX",
+      "description": "Latest CBOE Volatility Index close reported by FRED.",
       "datasource": {"type": "prometheus", "uid": "prometheus"},
-      "targets": [
-        {
-          "refId": "A",
-          "expr": "market_data_latest_value{region=~\"global|crypto\"}",
-          "legendFormat": "{{region}} / {{label}}"
-        }
-      ],
-      "gridPos": {"h": 7, "w": 8, "x": 16, "y": 7},
+      "targets": [{"refId": "A", "expr": "market_data_latest_value{symbol=\"VIXCLS\"}", "legendFormat": "Volatility Index"}],
+      "gridPos": {"h": 5, "w": 4, "x": 20, "y": 0},
       "options": {
         "reduceOptions": {"values": false, "calcs": ["lastNotNull"], "fields": ""},
         "orientation": "auto",
-        "textMode": "auto",
+        "textMode": "value_and_name",
         "colorMode": "value",
         "graphMode": "area",
         "justifyMode": "auto"
       },
       "fieldConfig": {
         "defaults": {
+          "color": {"mode": "fixed", "fixedColor": "red"},
           "decimals": 2,
-          "thresholds": {"mode": "absolute", "steps": [{"color": "green", "value": null}]}
+          "thresholds": {"mode": "absolute", "steps": [{"color": "red", "value": null}]}
         },
         "overrides": []
       }
@@ -189,23 +167,24 @@
     {
       "id": 7,
       "type": "bargauge",
-      "title": "Regional Move Percent",
+      "title": "Largest Daily Moves",
+      "description": "The fourteen largest absolute daily changes, preserving gain and loss direction.",
       "datasource": {"type": "prometheus", "uid": "prometheus"},
       "targets": [
         {
           "refId": "A",
-          "expr": "market_data_daily_change_percent",
-          "legendFormat": "{{region}} / {{label}}"
+          "expr": "market_data_daily_change_percent and on(symbol) topk(14, abs(market_data_daily_change_percent))",
+          "legendFormat": "{{label}}"
         }
       ],
-      "gridPos": {"h": 9, "w": 24, "x": 0, "y": 14},
+      "gridPos": {"h": 11, "w": 16, "x": 0, "y": 5},
       "options": {
         "displayMode": "gradient",
         "minVizWidth": 0,
-        "minVizHeight": 10,
+        "minVizHeight": 18,
         "orientation": "horizontal",
         "reduceOptions": {"values": false, "calcs": ["lastNotNull"], "fields": ""},
-        "showUnfilled": true
+        "showUnfilled": false
       },
       "fieldConfig": {
         "defaults": {
@@ -225,30 +204,34 @@
     },
     {
       "id": 8,
-      "type": "timeseries",
-      "title": "Regional Values Over Time",
+      "type": "stat",
+      "title": "Source Status",
+      "description": "A source is online only when every tracked instrument from that source reports successfully.",
       "datasource": {"type": "prometheus", "uid": "prometheus"},
-      "targets": [
-        {
-          "refId": "A",
-          "expr": "market_data_latest_value",
-          "legendFormat": "{{region}} / {{label}}"
-        }
-      ],
-      "gridPos": {"h": 10, "w": 24, "x": 0, "y": 23},
+      "targets": [{"refId": "A", "expr": "min by(source) (market_data_source_up)", "legendFormat": "{{source}}"}],
+      "gridPos": {"h": 5, "w": 8, "x": 16, "y": 5},
       "options": {
-        "legend": {"displayMode": "table", "placement": "bottom", "showLegend": true},
-        "tooltip": {"mode": "multi", "sort": "desc"}
+        "reduceOptions": {"values": false, "calcs": ["lastNotNull"], "fields": ""},
+        "orientation": "horizontal",
+        "textMode": "value_and_name",
+        "colorMode": "background",
+        "graphMode": "none",
+        "justifyMode": "center"
       },
       "fieldConfig": {
         "defaults": {
-          "decimals": 2,
-          "custom": {
-            "drawStyle": "line",
-            "lineInterpolation": "smooth",
-            "lineWidth": 2,
-            "fillOpacity": 8,
-            "showPoints": "never"
+          "mappings": [
+            {
+              "type": "value",
+              "options": {
+                "0": {"color": "red", "index": 0, "text": "DOWN"},
+                "1": {"color": "green", "index": 1, "text": "ONLINE"}
+              }
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [{"color": "red", "value": null}, {"color": "green", "value": 1}]
           }
         },
         "overrides": []
@@ -256,32 +239,230 @@
     },
     {
       "id": 9,
-      "type": "table",
-      "title": "Source Freshness",
+      "type": "stat",
+      "title": "Coverage",
+      "description": "Current breadth of the market data exporter.",
+      "datasource": {"type": "prometheus", "uid": "prometheus"},
+      "targets": [
+        {"refId": "A", "expr": "count(market_data_latest_value)", "legendFormat": "Instruments"},
+        {"refId": "B", "expr": "count(market_data_daily_change_percent != 0)", "legendFormat": "Moving today"},
+        {"refId": "C", "expr": "count(count by(region) (market_data_latest_value))", "legendFormat": "Regions"}
+      ],
+      "gridPos": {"h": 6, "w": 8, "x": 16, "y": 10},
+      "options": {
+        "reduceOptions": {"values": false, "calcs": ["lastNotNull"], "fields": ""},
+        "orientation": "horizontal",
+        "textMode": "value_and_name",
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "center"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {"mode": "continuous-GrYlRd"},
+          "decimals": 0,
+          "thresholds": {"mode": "absolute", "steps": [{"color": "blue", "value": null}]}
+        },
+        "overrides": [
+          {"matcher": {"id": "byName", "options": "Instruments"}, "properties": [{"id": "color", "value": {"mode": "fixed", "fixedColor": "blue"}}]},
+          {"matcher": {"id": "byName", "options": "Moving today"}, "properties": [{"id": "color", "value": {"mode": "fixed", "fixedColor": "orange"}}]},
+          {"matcher": {"id": "byName", "options": "Regions"}, "properties": [{"id": "color", "value": {"mode": "fixed", "fixedColor": "purple"}}]}
+        ]
+      }
+    },
+    {
+      "id": 10,
+      "type": "stat",
+      "title": "Regional Benchmarks",
+      "description": "A representative equity benchmark for each tracked market region.",
       "datasource": {"type": "prometheus", "uid": "prometheus"},
       "targets": [
         {
           "refId": "A",
-          "expr": "market_data_source_up",
-          "legendFormat": "{{region}} / {{source}} / {{label}}",
-          "format": "table",
-          "instant": true
+          "expr": "market_data_latest_value{symbol=~\"SPASTT01AUM661N|SPASTT01CNM661N|SPASTT01EZM661N|SPASTT01JPM661N|SPASTT01INM661N|SPASTT01KRM661N|SP500\"}",
+          "legendFormat": "{{label}}"
+        }
+      ],
+      "gridPos": {"h": 10, "w": 12, "x": 0, "y": 16},
+      "options": {
+        "reduceOptions": {"values": false, "calcs": ["lastNotNull"], "fields": ""},
+        "orientation": "horizontal",
+        "textMode": "value_and_name",
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {"mode": "fixed", "fixedColor": "cyan"},
+          "decimals": 2,
+          "thresholds": {"mode": "absolute", "steps": [{"color": "cyan", "value": null}]}
         },
+        "overrides": []
+      }
+    },
+    {
+      "id": 11,
+      "type": "stat",
+      "title": "Australian Markets",
+      "description": "RBA reference rates plus the latest Australian share-price index observation.",
+      "datasource": {"type": "prometheus", "uid": "prometheus"},
+      "targets": [
         {
-          "refId": "B",
-          "expr": "market_data_reported_timestamp_seconds",
-          "legendFormat": "{{region}} / {{source}} / {{label}}",
+          "refId": "A",
+          "expr": "market_data_latest_value{region=\"australia\",source=~\"rba|fred\"}",
+          "legendFormat": "{{label}}"
+        }
+      ],
+      "gridPos": {"h": 10, "w": 12, "x": 12, "y": 16},
+      "options": {
+        "reduceOptions": {"values": false, "calcs": ["lastNotNull"], "fields": ""},
+        "orientation": "horizontal",
+        "textMode": "value_and_name",
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {"mode": "fixed", "fixedColor": "orange"},
+          "decimals": 4,
+          "thresholds": {"mode": "absolute", "steps": [{"color": "orange", "value": null}]}
+        },
+        "overrides": [
+          {
+            "matcher": {"id": "byName", "options": "Australia Share Prices"},
+            "properties": [{"id": "decimals", "value": 2}, {"id": "color", "value": {"mode": "fixed", "fixedColor": "blue"}}]
+          },
+          {
+            "matcher": {"id": "byName", "options": "AUD Trade-Weighted Index"},
+            "properties": [{"id": "decimals", "value": 1}, {"id": "color", "value": {"mode": "fixed", "fixedColor": "yellow"}}]
+          }
+        ]
+      }
+    },
+    {
+      "id": 12,
+      "type": "timeseries",
+      "title": "Market Change Signal (24h)",
+      "description": "The last 24 hours of comparable daily percentage-change signals for major equity, commodity, currency, and crypto instruments.",
+      "datasource": {"type": "prometheus", "uid": "prometheus"},
+      "targets": [
+        {
+          "refId": "A",
+          "expr": "market_data_daily_change_percent{symbol=~\"SP500|NASDAQCOM|VIXCLS|DCOILBRENTEU|AUDUSD|bitcoin|ethereum|SPASTT01AUM661N|SPASTT01CNM661N|SPASTT01EZM661N|SPASTT01JPM661N\"}",
+          "legendFormat": "{{label}}"
+        }
+      ],
+      "gridPos": {"h": 10, "w": 16, "x": 0, "y": 26},
+      "timeFrom": "24h",
+      "options": {
+        "legend": {"calcs": ["lastNotNull"], "displayMode": "table", "placement": "right", "showLegend": true, "width": 280},
+        "tooltip": {"mode": "multi", "sort": "desc"}
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "percent",
+          "decimals": 2,
+          "color": {"mode": "palette-classic"},
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": true,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 12,
+            "gradientMode": "opacity",
+            "hideFrom": {"legend": false, "tooltip": false, "viz": false},
+            "insertNulls": false,
+            "lineInterpolation": "smooth",
+            "lineWidth": 2,
+            "pointSize": 5,
+            "scaleDistribution": {"type": "linear"},
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {"group": "A", "mode": "none"},
+            "thresholdsStyle": {"mode": "off"}
+          },
+          "thresholds": {"mode": "absolute", "steps": [{"color": "green", "value": null}]}
+        },
+        "overrides": []
+      }
+    },
+    {
+      "id": 13,
+      "type": "stat",
+      "title": "Oldest Observation",
+      "description": "Age in hours of the oldest observation currently reported by each source. Monthly series are expected to be older.",
+      "datasource": {"type": "prometheus", "uid": "prometheus"},
+      "targets": [
+        {
+          "refId": "A",
+          "expr": "max by(source) ((time() - market_data_reported_timestamp_seconds) / 3600)",
+          "legendFormat": "{{source}}"
+        }
+      ],
+      "gridPos": {"h": 10, "w": 8, "x": 16, "y": 26},
+      "options": {
+        "reduceOptions": {"values": false, "calcs": ["lastNotNull"], "fields": ""},
+        "orientation": "horizontal",
+        "textMode": "value_and_name",
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {"mode": "palette-classic"},
+          "unit": "suffix: h",
+          "decimals": 0,
+          "thresholds": {"mode": "absolute", "steps": [{"color": "blue", "value": null}]}
+        },
+        "overrides": []
+      }
+    },
+    {
+      "id": 14,
+      "type": "table",
+      "title": "Instrument Catalog",
+      "description": "Complete current market dataset with Prometheus transport labels removed.",
+      "datasource": {"type": "prometheus", "uid": "prometheus"},
+      "targets": [
+        {
+          "refId": "A",
+          "expr": "market_data_latest_value",
+          "legendFormat": "{{label}}",
           "format": "table",
           "instant": true
         }
       ],
-      "gridPos": {"h": 8, "w": 24, "x": 0, "y": 33},
-      "options": {"showHeader": true},
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {"Time": true, "__name__": true, "instance": true, "job": true},
+            "indexByName": {"region": 0, "label": 1, "symbol": 2, "source": 3, "Value": 4},
+            "renameByName": {"region": "Region", "label": "Instrument", "symbol": "Symbol", "source": "Source", "Value": "Latest"}
+          }
+        }
+      ],
+      "gridPos": {"h": 12, "w": 24, "x": 0, "y": 36},
+      "options": {"cellHeight": "sm", "showHeader": true},
       "fieldConfig": {
-        "defaults": {"custom": {"align": "auto", "inspect": false}},
-        "overrides": []
+        "defaults": {
+          "custom": {"align": "auto", "cellOptions": {"type": "auto"}, "inspect": false},
+          "decimals": 4
+        },
+        "overrides": [
+          {"matcher": {"id": "byName", "options": "Region"}, "properties": [{"id": "custom.width", "value": 120}]},
+          {"matcher": {"id": "byName", "options": "Instrument"}, "properties": [{"id": "custom.width", "value": 300}]},
+          {"matcher": {"id": "byName", "options": "Symbol"}, "properties": [{"id": "custom.width", "value": 160}]},
+          {"matcher": {"id": "byName", "options": "Source"}, "properties": [{"id": "custom.width", "value": 130}]},
+          {"matcher": {"id": "byName", "options": "Latest"}, "properties": [{"id": "custom.width", "value": 160}]}
+        ]
       }
     }
   ]
 }
-
