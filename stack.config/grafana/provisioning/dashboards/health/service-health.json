@@ -1,6 +1,6 @@
 {
   "title": "Service Health Overview",
-  "tags": ["health", "monitoring", "docker"],
+  "tags": ["health", "monitoring", "podman"],
   "timezone": "browser",
   "schemaVersion": 16,
   "version": 1,
