@@ -18,7 +18,7 @@ class GrafanaSecretLoggingConfigTest {
     }
 
     private fun repoFileText(relativePath: String): String =
-        Files.readString(repoRoot().resolve(relativePath))
+        TestSourceFiles.moduleText("grafana", relativePath)
 
     private fun repoRoot(): Path {
         var current = Path.of("").toAbsolutePath()
