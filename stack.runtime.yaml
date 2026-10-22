@@ -4,7 +4,7 @@ module: "grafana"
 target: "observability"
 services:
   grafana:
-    image: "grafana/grafana:11.6.9"
+    image: "grafana/grafana:11.6.9@sha256:129fc95da485ade43720ab7ca725c34ce15ea3c03fadb68309e65829a929e3c5"
     containerName: "grafana"
     lifecycle: "daemon"
     updatePolicy: "registry"

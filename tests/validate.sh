@@ -32,3 +32,5 @@ jq -e '
 ' "$dashboard" >/dev/null
 grep -Eq 'GF_PLUGINS_DISABLE_PLUGINS: "grafana-lokiexplore-app"' "$runtime_model"
 grep -Eq 'GF_PLUGINS_PREINSTALL_DISABLED: true' "$runtime_model"
+
+python3 -B "$repo_root/tests/test_immutable_runtime_images.py"
